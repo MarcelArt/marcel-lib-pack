@@ -23,7 +23,7 @@ func Map[TSlice any, TResult any](s []TSlice, cb mapFunc[TSlice, TResult]) []TRe
 }
 
 func Filter[TSlice any](s []TSlice, cb func(currentValue TSlice) bool) []TSlice {
-	var result []TSlice
+	result := make([]TSlice, 0)
 	for _, currentValue := range s {
 		if cb(currentValue) {
 			result = append(result, currentValue)

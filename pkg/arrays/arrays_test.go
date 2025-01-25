@@ -38,6 +38,24 @@ func TestFilter(t *testing.T) {
 
 		assert.Equal(t, []int{2, 4}, result)
 	})
+
+	t.Run("should return an empty array if nothing is found", func(t *testing.T) {
+		s := []int{1, 3, 5}
+		result := arrays.Filter(s, func(currentValue int) bool {
+			return currentValue == 2
+		})
+
+		assert.Equal(t, []int{}, result)
+	})
+
+	t.Run("should be able to return more than one element", func(t *testing.T) {
+		s := []int{1, 2, 3, 4, 5}
+		result := arrays.Filter(s, func(currentValue int) bool {
+			return currentValue%2 == 0
+		})
+
+		assert.Len(t, result, 2)
+	})
 }
 
 func TestFind(t *testing.T) {
