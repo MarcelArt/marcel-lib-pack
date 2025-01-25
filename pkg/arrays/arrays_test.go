@@ -49,4 +49,13 @@ func TestFind(t *testing.T) {
 
 		assert.Equal(t, 2, *result)
 	})
+
+	t.Run("shoud return nil if nothing found", func(t *testing.T) {
+		s := []int{1, 3, 5}
+		result := arrays.Find(s, func(currentValue int) bool {
+			return currentValue == 2
+		})
+
+		assert.Nil(t, result)
+	})
 }
